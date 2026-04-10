@@ -4,9 +4,12 @@
 module.exports = {
   ...(typeof combineUsers !== 'undefined' && { combineUsers })
 };
+require('datejs');
+
 function combineUsers(...arrays) {
     const users = arrays.flat();
-    const merge_date = new Date().toISOString().split('T')[0];
+    
+    const merge_date = Date.today().toString("M/d/yyyy");
 
     return {
         users,
@@ -14,9 +17,6 @@ function combineUsers(...arrays) {
     };
 }
 
-const users1 = ['user1', 'user2'];
-const users2 = ['user3', 'user4'];
-const users3 = ['user5'];
+module.exports = { combineUsers };
+console.log(combineUsers(["Jim3","Pam5","Dwight77"],["Michael6","Eleanor22","Chidi202"],["Jack_jack","Julia_Oreo", "Bill_bore"]))
 
-const result = combineUsers(users1, users2, users3);
-console.log(result);
